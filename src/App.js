@@ -1,12 +1,9 @@
-import "./App.css";
-import Button from "~/component/Button";
-
 function App() {
-  return (
-    <div className="App">
-      <Button />
-    </div>
-  );
+    return (
+        <div className="App">
+            <h1>Clone Tiktok</h1>
+        </div>
+    );
 }
 
 export default App;
