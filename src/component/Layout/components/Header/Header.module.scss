@@ -27,7 +27,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 361px;
     height: var(--search-height);
     background-color: rgba(22, 24, 35, 0.06);
     border-radius: var(--search-border-radius);
@@ -62,6 +61,18 @@
     }
 }
 
+.search,
+.search-result {
+    width: 361px;
+}
+
+.search-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    color: rgba(22, 24, 35, 0.5);
+}
+
 .clear,
 .icon-loading {
     position: absolute;
@@ -83,6 +94,7 @@
         cursor: pointer;
         background-color: rgba(22, 24, 35, 0.03);
     }
+
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
