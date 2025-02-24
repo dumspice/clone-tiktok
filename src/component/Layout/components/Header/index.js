@@ -174,7 +174,7 @@ function Header() {
                     <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Images
-                                src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_1280asdasd.png"
+                                src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_1280.png"
                                 className={cx('user-avatar')}
                                 alt="name of the user"
                                 fallback="https://atomiks.github.io/tippyjs/static/logo-ebc385458e03fdb24af078536af88065.svg"
