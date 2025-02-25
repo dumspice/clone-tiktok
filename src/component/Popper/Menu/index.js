@@ -11,7 +11,7 @@ import Header from './Header';
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {}; // create default function to avoid error when nothing pass in onChange (or any kind of event listeners)
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -40,20 +40,21 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             offset={[10, 15]}
             delay={[0, 700]}
+            interactive
+            placement="bottom-end"
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <div className={cx('tippy-arrow')} data-placement={attrs['data-placement']}></div>
                     <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && <Header title={current.title} onBack={onBack}></Header>}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
-            interactive
-            placement="bottom-end"
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>

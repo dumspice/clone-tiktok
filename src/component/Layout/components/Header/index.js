@@ -22,6 +22,7 @@ import Menu from '~/component/Popper/Menu';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/component/Icon/index.js';
 import Images from '~/component/Images';
 import Search from '~/component/Layout/components/Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -51,6 +52,46 @@ const MENU_ITEMS = [
                 {
                     code: 'zh',
                     title: 'Chinese',
+                },
+                {
+                    code: 'por',
+                    title: 'Portugal',
+                },
+                {
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    code: 'sing',
+                    title: 'Singapore',
+                },
+                {
+                    code: 'thai',
+                    title: 'Thailand',
+                },
+                {
+                    code: 'ger',
+                    title: 'German',
+                },
+                {
+                    code: 'por',
+                    title: 'Portugal',
+                },
+                {
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    code: 'sing',
+                    title: 'Singapore',
+                },
+                {
+                    code: 'thai',
+                    title: 'Thailand',
+                },
+                {
+                    code: 'ger',
+                    title: 'German',
                 },
             ],
         },
@@ -102,7 +143,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to="/" className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </Link>
                 <Search />
@@ -122,6 +163,7 @@ function Header() {
                             <Tippy delay={[0, 300]} content="Notifications" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <InboxIcon />
+                                    <span className={cx('badge')}>99</span>
                                 </button>
                             </Tippy>
                         </>
