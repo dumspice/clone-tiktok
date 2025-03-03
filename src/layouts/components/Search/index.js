@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 import { SearchIcon } from '~/component/Icon/index.js';
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '~/hooks';
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 
 const cx = classNames.bind(styles);
 function Search() {

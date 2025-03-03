@@ -1,16 +1,7 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleQuestion,
-    faEarthAsia,
-    faEllipsisVertical,
-    faKeyboard,
-    faUser,
-    faCoins,
-    faGear,
-    faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -21,116 +12,11 @@ import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/component/Icon/index.js';
 import Images from '~/component/Images';
-import Search from '~/component/Layout/components/Search';
-import routesConfig from '~/config/routes';
+import Search from '~/layouts/components/Search';
+import config from '~/config';
+import { USER_MENU, MENU_ITEMS } from './constants';
 
 const cx = classNames.bind(styles);
-
-const MENU_ITEMS = [
-    {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'jp',
-                    title: 'Japanese',
-                },
-                {
-                    code: 'ko',
-                    title: 'Korean',
-                },
-                {
-                    code: 'zh',
-                    title: 'Chinese',
-                },
-                {
-                    code: 'por',
-                    title: 'Portugal',
-                },
-                {
-                    code: 'laos',
-                    title: 'Laos',
-                },
-                {
-                    code: 'sing',
-                    title: 'Singapore',
-                },
-                {
-                    code: 'thai',
-                    title: 'Thailand',
-                },
-                {
-                    code: 'ger',
-                    title: 'German',
-                },
-                {
-                    code: 'por',
-                    title: 'Portugal',
-                },
-                {
-                    code: 'laos',
-                    title: 'Laos',
-                },
-                {
-                    code: 'sing',
-                    title: 'Singapore',
-                },
-                {
-                    code: 'thai',
-                    title: 'Thailand',
-                },
-                {
-                    code: 'ger',
-                    title: 'German',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keyboard shortcuts',
-    },
-];
-
-const USER_MENU = [
-    {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile',
-        to: '/profile',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get coins',
-        to: '/get-coins',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Settings',
-        to: '/setting',
-    },
-    ...MENU_ITEMS,
-    {
-        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
-        title: 'Log out',
-        to: '/setting',
-        separate: true,
-    },
-];
 
 function Header() {
     const currentUser = true;
@@ -143,7 +29,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </Link>
                 <Search />
