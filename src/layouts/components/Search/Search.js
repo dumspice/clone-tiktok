@@ -15,20 +15,20 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounce = useDebounce(searchValue, 500);
+    const debounceValue = useDebounce(searchValue, 500);
 
     const ref = useRef();
 
     // call api in this useEffect, then set search result.
     useEffect(() => {
-        if (!debounce) return;
+        if (!debounceValue) return;
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchService.search(debounce);
+            const result = await searchService.search(debounceValue);
             setSearchResult(result);
             setLoading(false);
         };
@@ -36,7 +36,7 @@ function Search() {
         fetchApi();
 
         setLoading(true);
-    }, [debounce]);
+    }, [debounceValue]);
 
     const handleClearSearchValue = () => {
         setSearchValue('');
@@ -60,21 +60,24 @@ function Search() {
         }
     };
 
+    // render result of search input
+    const renderResult = (attrs) => (
+        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                <h4 className={cx('search-title')}>Accounts</h4>
+                {searchResult.map((result) => (
+                    <AccountItems key={result.id} data={result} />
+                ))}
+            </PopperWrapper>
+        </div>
+    );
+
     return (
         <div>
             <HeadlessTippy
                 interactive
                 visible={showResult && searchResult.length > 0}
-                render={(attrs) => (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>
-                            <h4 className={cx('search-title')}>Accounts</h4>
-                            {searchResult.map((result) => (
-                                <AccountItems key={result.id} data={result} />
-                            ))}
-                        </PopperWrapper>
-                    </div>
-                )}
+                render={renderResult}
                 onClickOutside={handleHideResult}
             >
                 <div className={cx('search')}>

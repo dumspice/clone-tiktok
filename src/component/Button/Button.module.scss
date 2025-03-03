@@ -50,7 +50,7 @@
 
 .primary {
     background-color: var(--primary-color);
-    color: var(--white-color);
+    color: var(--white-color) !important;
     border-color: var(--primary-color);
 
     &:hover {
@@ -61,7 +61,7 @@
 
 .outline {
     border-color: var(--primary-color);
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 
     &:hover {
         background-color: rgba(254, 44, 85, 0.06);
